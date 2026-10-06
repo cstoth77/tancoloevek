@@ -13,6 +13,17 @@ for (const [name, opts] of [
 ]) {
   const page = await browser.newPage({ ...opts, reducedMotion: "reduce" });
   await page.goto(url, { waitUntil: "networkidle" });
+  if (full) {
+    // lazy képek betöltése: végiggörgetés, majd vissza a tetejére
+    await page.evaluate(async () => {
+      for (let y = 0; y < document.body.scrollHeight; y += 600) {
+        window.scrollTo(0, y);
+        await new Promise((r) => setTimeout(r, 80));
+      }
+      window.scrollTo(0, 0);
+    });
+    await page.waitForLoadState("networkidle");
+  }
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   const path = `screenshots/${label}-${name}.png`;
   await page.screenshot({ path, fullPage: full });

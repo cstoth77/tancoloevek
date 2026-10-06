@@ -88,9 +88,8 @@ export const site = {
     zip: "1173",
     city: "Budapest",
     directions: "Rákoskeresztúr Városközponttól kb. 5 percre",
-    lat: 47.4796,
-    lng: 19.2475,
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Allstars+Dance+Studio+Budapest+Pesti+%C3%BAt+193",
+    mapsEmbedUrl: "https://www.google.com/maps?q=Allstars+Dance+Studio,+1173+Budapest,+Pesti+%C3%BAt+193&output=embed",
   },
   contact: {
     email: "tancoloevek@gmail.com",

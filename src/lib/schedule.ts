@@ -17,11 +17,17 @@ function parseDate(iso: string) {
   return { y, m, d, weekday: DAYS[new Date(Date.UTC(y, m - 1, d)).getUTCDay()] };
 }
 
-export function formatSlot(slot: Slot): string {
+/** Az időpont két része: a nap (kisebb sor) és az idő (a tábla nagy betűi). */
+export function slotParts(slot: Slot): { day: string; time: string } {
   const time = `${slot.start}–${slot.end}`;
-  if (slot.kind === "weekly") return `Minden ${ON_DAY[slot.weekday]} ${time}`;
+  if (slot.kind === "weekly") return { day: `Minden ${ON_DAY[slot.weekday]}`, time };
   const { y, m, d, weekday } = parseDate(slot.date);
-  return `${slot.label}: ${y}. ${MONTHS[m - 1]} ${d}., ${weekday} · ${time}`;
+  return { day: `${slot.label}: ${y}. ${MONTHS[m - 1]} ${d}., ${weekday}`, time };
+}
+
+export function formatSlot(slot: Slot): string {
+  const { day, time } = slotParts(slot);
+  return slot.kind === "weekly" ? `${day} ${time}` : `${day} · ${time}`;
 }
 
 /** Budapesti naptári nap (YYYY-MM-DD) – a Vercel UTC-ben fut. */

@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { formatSlot, visibleSlots } from "@/lib/schedule";
+import { formatSlot, slotParts, visibleSlots } from "@/lib/schedule";
 import type { Slot } from "@/content/site";
 
 const weeklyTue: Slot = { kind: "weekly", weekday: "kedd", start: "18:00", end: "19:00" };
@@ -28,5 +28,14 @@ describe("visibleSlots", () => {
   });
   test("UTC éjfél előtt már budapesti másnap számít", () => {
     expect(visibleSlots([once], new Date("2026-10-14T22:30:00Z"))).toEqual([]);
+  });
+});
+
+describe("slotParts", () => {
+  test("heti: nap és idő külön", () => {
+    expect(slotParts(weeklyTue)).toEqual({ day: "Minden kedden", time: "18:00–19:00" });
+  });
+  test("egyszeri: címke, dátum és idő", () => {
+    expect(slotParts(once)).toEqual({ day: "Első óra: 2026. október 14., szerda", time: "9:00–10:00" });
   });
 });
