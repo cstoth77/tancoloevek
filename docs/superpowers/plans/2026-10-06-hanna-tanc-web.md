@@ -21,6 +21,7 @@
 - Anti-AI-design: nincs kék-fehér SaaS hero, nincs középre zárt hero + 3 egyforma kártya, nincs mindenhol `rounded-2xl`, nincs öncélú gradiens/glow/árnyék.
 - Titkok: `FAL_KEY` csak `.env.local`-ban (gitignored), `RESEND_API_KEY`, `CONTACT_TO_EMAIL` csak Vercel env-ben / `.env.local`-ban. Kliensre semmi nem kerül (`NEXT_PUBLIC_` prefix tilos ezekre).
 - Kész: `npm run build`, `npm run lint`, `npm test`, `npm run e2e` zöld; Lighthouse mobil Perf ≥ 90, A11y ≥ 95, SEO = 100; critic ≥ 9/10.
+- Deploy: GitHub repo → Vercel Git-integráció; `main` = production. Push és repó-létrehozás csak kifejezett felhasználói jóváhagyással.
 - Commit üzenetek végén: `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`
 
 ## Review Focus
@@ -1380,10 +1381,12 @@ node -e "const r=require('./screenshots/lh.json').categories;for(const k in r)co
 ```
 Expected: performance ≥ 90, accessibility ≥ 95, seo = 100. Ha a performance kevés: a hero `<video>` `preload="none"` + poster, kisebb webm, a fontoknál `display: "swap"`.
 
-- [ ] **Step 2: Deploy előkészítése** – a Vercel CLI nincs telepítve. **Kérdezd meg a felhasználót**, melyik utat választja: (a) `npx vercel login` + `npx vercel` (preview), vagy (b) GitHub repo + Vercel import. A GitHub-repó létrehozása és a push kifelé irányuló művelet, ehhez kifejezett jóváhagyás kell.
+- [ ] **Step 2: GitHub** – a deploy útja: GitHub repo → Vercel Git-integráció (döntés: felhasználó, 2026-10-06). A `gh` CLI telepítve van, de nincs bejelentkezve: a felhasználó futtatja a `gh auth login`-t (interaktív, az agent nem tudja). Push előtt:
+  - `git status --ignored` → a `.env.local` és a `media/raw/` ignorált, a `git log -p | grep -c fal_sk_` → 0 (a kulcs soha nem került commitba);
+  - **kérdezd meg** a repó nevét, tulajdonosát (személyes fiók vagy szervezet) és láthatóságát (privát javasolt), és csak kifejezett igen után: `gh repo create <owner>/<name> --private --source . --remote origin --push`.
 
-- [ ] **Step 3: Env változók a Vercelen** – `RESEND_API_KEY` (ha a felhasználó ad), `CONTACT_TO_EMAIL=tancoloevek@gmail.com`, `NEXT_PUBLIC_SITE_URL=<preview URL>`. A `FAL_KEY` NEM kerül a Vercelre (csak lokálisan kell).
+- [ ] **Step 3: Vercel import** – a felhasználó a vercel.com-on: *Add New → Project → Import Git Repository* (a GitHub-hozzáférést a Vercel kéri). Framework: Next.js (automatikus), nincs build-beállítás. Env változók (Production + Preview): `RESEND_API_KEY` (ha van), `CONTACT_TO_EMAIL=tancoloevek@gmail.com`, `NEXT_PUBLIC_SITE_URL=<a Vercel domain>`. A `FAL_KEY` NEM kerül a Vercelre (csak lokálisan kell). Ezután minden `main`-re pusholt commit production deploy lesz, minden más branch/PR preview.
 
-- [ ] **Step 4: Preview ellenőrzés** – Playwright MCP-vel nyisd meg a preview URL-t: hero videó lejátszik, horgonyok mennek, a térkép betölt, az űrlap vagy a mailto működik. Production deploy csak a felhasználó jóváhagyásával.
+- [ ] **Step 4: Ellenőrzés** – Playwright MCP-vel nyisd meg a Vercel URL-t: hero videó lejátszik, horgonyok mennek, a térkép betölt, az űrlap vagy a mailto működik, `/sitemap.xml` és `/robots.txt` a valódi domainnel. Lighthouse a éles URL-en is.
 
 - [ ] **Step 5:** Commit (ha volt változás) és összefoglaló a felhasználónak: preview URL, Lighthouse-számok, critic-pontszám, nyitott TODO-k (Facebook URL, Hanna fotója, saját domain a Resendhez, fal kulcs rotálása).
