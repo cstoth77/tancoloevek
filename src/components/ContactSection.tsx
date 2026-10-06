@@ -9,7 +9,7 @@ export function ContactSection() {
     <section id="kapcsolat" aria-labelledby="kapcsolat-title" className="border-t border-letter/10">
       <div className="mx-auto grid max-w-[1360px] gap-12 px-4 py-20 md:grid-cols-12 md:px-8 md:py-32">
         <div className="md:col-span-5">
-          <h2 id="kapcsolat-title" className="font-display text-[clamp(2.2rem,6vw,4.5rem)] font-semibold uppercase leading-[0.95]">
+          <h2 id="kapcsolat-title" className="font-display text-[clamp(2.2rem,6vw,4.5rem)] font-semibold uppercase leading-[1.1]">
             Gyere, táncolj velem!
           </h2>
           <p className="mt-6 text-xl text-letter-soft">Mindenkit szeretettel várok egy ingyenes próbaórára.</p>
