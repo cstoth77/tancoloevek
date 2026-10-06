@@ -39,3 +39,12 @@ export function visibleSlots(slots: Slot[], now: Date): Slot[] {
   const today = budapestDay(now);
   return slots.filter((s) => s.kind === "weekly" || s.date >= today);
 }
+
+const MONTHS_SHORT = ["JAN.", "FEBR.", "MÁRC.", "ÁPR.", "MÁJ.", "JÚN.", "JÚL.", "AUG.", "SZEPT.", "OKT.", "NOV.", "DEC."];
+
+/** Tömör, nagybetűs sor a hero betűtáblájához (csak a kezdés időpontja). */
+export function slotShort(slot: Slot): string {
+  if (slot.kind === "weekly") return `${slot.weekday.toUpperCase()} ${slot.start}`;
+  const { m, d, weekday } = parseDate(slot.date);
+  return `${MONTHS_SHORT[m - 1]} ${d}. ${weekday.toUpperCase()} ${slot.start}`;
+}

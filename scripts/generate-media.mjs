@@ -24,7 +24,7 @@ export const STILLS = {
   },
   "tancolo-evek": {
     ratio: "4:5",
-    prompt: `A small group of smiling women and men in their sixties dancing together in a bright studio, colourful casual sportswear with sunflower-yellow and sky-blue accents, genuine laughter, slight motion blur on hands. ${STYLE}`,
+    prompt: `Candid moment in a community dance class: a few women and men in their sixties and seventies learning a simple step together in a clean, well-kept bright dance studio with freshly painted cream walls and a wooden floor, ordinary muted everyday clothes (greys, navy, soft beige, one mustard cardigan), natural unposed expressions, some concentrating on their feet, one woman laughing quietly, nobody looking at the camera, slight motion blur, honest and unglamorous. ${STYLE}`,
   },
   hanna: {
     ratio: "4:5",

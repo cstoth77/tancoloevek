@@ -7,6 +7,8 @@ export type ClassSlug = "anya-baba" | "tancolo-evek";
 export type DanceClass = {
   slug: ClassSlug;
   title: string;
+  /** Rövid név a hero betűtáblájához. */
+  shortTitle: string;
   tagline: string;
   audience: string;
   intro: string;
@@ -23,6 +25,7 @@ const classes: DanceClass[] = [
   {
     slug: "anya-baba",
     title: "Táncolj együtt a babáddal!",
+    shortTitle: "Anya–baba tánc",
     tagline: "Mozgás • zene • közös élmény",
     audience: "Anyukáknak, hordozott babával",
     intro:
@@ -44,6 +47,7 @@ const classes: DanceClass[] = [
   {
     slug: "tancolo-evek",
     title: "Táncoló Évek",
+    shortTitle: "Táncoló Évek 50+",
     tagline: "Tánc, közösség és életöröm 50 év felettieknek",
     audience: "50 év felettieknek",
     intro: "Egy kellemes órára kiszakadunk a hétköznapokból: mozgunk, táncolunk, és közben jól érezzük magunkat.",

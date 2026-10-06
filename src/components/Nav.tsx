@@ -24,7 +24,7 @@ export function Nav() {
             </li>
           ))}
         </ul>
-        <a href="#kapcsolat" className="hidden min-h-11 items-center rounded-full bg-clay px-5 font-semibold text-felt md:inline-flex">
+        <a href="#kapcsolat" className="hidden min-h-11 items-center rounded-[3px] bg-clay px-5 font-semibold text-felt md:inline-flex">
           {site.hero.cta}
         </a>
       </nav>
@@ -36,7 +36,7 @@ export function Nav() {
 export function MobileActionBar() {
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-letter/10 bg-felt-raised/95 px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-3 md:hidden">
-      <a href="#kapcsolat" className="flex min-h-12 w-full items-center justify-center rounded-full bg-clay text-lg font-semibold text-felt">
+      <a href="#kapcsolat" className="flex min-h-12 w-full items-center justify-center rounded-[3px] bg-clay text-lg font-semibold text-felt">
         {site.hero.cta}
       </a>
     </div>

@@ -1,4 +1,5 @@
 import { About } from "@/components/About";
+import { BoardHeading } from "@/components/BoardHeading";
 import { ClassBlock } from "@/components/ClassBlock";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
@@ -21,11 +22,11 @@ export default function Home() {
       <Nav />
       <main id="top">
         <Hero />
-        <section id="orak" aria-labelledby="orak-title" className="pb-20 md:pb-32">
-          <h2 id="orak-title" className="mx-auto max-w-[1360px] px-4 pb-12 pt-20 font-display text-[clamp(2.6rem,8vw,6.5rem)] font-bold uppercase leading-[1.1] md:px-8 md:pt-32">
-            Órák
-          </h2>
-          <div className="grid gap-20 md:gap-32">
+        <section id="orak" aria-labelledby="orak-title" className="pb-12 md:pb-16">
+          <div className="mx-auto max-w-[1360px] px-4 pb-12 pt-16 md:px-8 md:pt-24">
+            <BoardHeading id="orak-title">Órák</BoardHeading>
+          </div>
+          <div className="mx-auto grid max-w-[1360px] gap-16 px-4 md:gap-24 md:px-8">
             {site.classes.map((c, i) => (
               <ClassBlock key={c.slug} cls={c} index={i} />
             ))}

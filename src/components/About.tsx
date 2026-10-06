@@ -1,19 +1,20 @@
-import Image from "next/image";
 import { site } from "@/content/site";
+import { BoardHeading } from "./BoardHeading";
+import { Print } from "./Print";
 
+/** Fotóprint és egy keskenyebb bemutatkozó lap egymás mellett. */
 export function About() {
   const { about } = site;
   return (
-    <section id="rolam" aria-labelledby="rolam-title" className="mx-auto grid max-w-[1360px] gap-10 px-4 py-20 md:grid-cols-12 md:px-8 md:py-32">
-      <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] md:col-span-4 md:col-start-2">
-        <Image src={about.photo.src} alt={about.photo.alt} fill sizes="(min-width: 768px) 30vw, 100vw" className="object-cover" />
-      </div>
-      <div className="md:col-span-6 md:col-start-7 md:self-end">
-        <h2 id="rolam-title" className="font-display text-[clamp(2.2rem,5vw,4rem)] font-bold uppercase leading-[1.1]">
-          {about.heading}
-        </h2>
-        {about.paragraphs.map((p) => (
-          <p key={p} className="mt-6 max-w-[52ch] text-xl text-letter">
+    <section id="rolam" aria-labelledby="rolam-title" className="mx-auto grid max-w-[1360px] gap-10 px-4 py-16 md:grid-cols-12 md:items-end md:px-8 md:py-20">
+      <BoardHeading id="rolam-title" className="md:col-span-12 md:justify-self-start">
+        {about.heading}
+      </BoardHeading>
+      <Print img={about.photo} sizes="(min-width: 768px) 30vw, 100vw" tape="left-8 -rotate-[4deg] bg-sun/75" className="mx-6 aspect-[4/3] md:col-span-4 md:mx-0 md:aspect-[4/5] md:-rotate-[1deg]" />
+      <div className="relative bg-powder px-5 pb-8 pt-10 text-powder-ink md:col-span-7 md:col-start-6 md:px-12 md:py-12">
+        <span aria-hidden className="absolute -top-3 right-12 h-7 w-28 rotate-[3deg] bg-tape/85" />
+        {about.paragraphs.map((p, i) => (
+          <p key={p} className={`max-w-[52ch] text-xl ${i ? "mt-5" : ""}`}>
             {p}
           </p>
         ))}

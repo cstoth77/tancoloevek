@@ -13,6 +13,8 @@
   --color-sky: #7cbde6;
   --font-display: var(--font-display-face), "Arial Rounded MT Bold", system-ui, sans-serif;
   --font-body: var(--font-body-face), "Verdana", system-ui, sans-serif;
+  --font-board: var(--font-board-face), ui-monospace, monospace;
+  --color-tape: #e8dcc0;
 }
 
 html {
@@ -52,4 +54,26 @@ body {
       animation-range: entry calc(10% + var(--i) * 4%) entry calc(45% + var(--i) * 4%);
     }
   }
+}
+
+/* A betűtábla filce: mélyebb, jól látható hornyok */
+.letterboard {
+  font-family: var(--font-board);
+  font-variation-settings: "wdth" 75;
+  background-color: #191210;
+  background-image: repeating-linear-gradient(to bottom, transparent 0 8px, rgb(0 0 0 / 0.55) 8px 9px, rgb(255 255 255 / 0.07) 9px 10px);
+  color: var(--color-letter);
+}
+
+/* A betűtábla „műanyag” betűi: egy-egy karakter kissé ferdén ül a horonyban */
+.board-crooked {
+  display: inline-block;
+  transform: rotate(-4deg) translateY(1px);
+}
+
+/* Betűtábla-betű a szekciócímekhez és adatokhoz */
+.board-type {
+  font-family: var(--font-board);
+  font-variation-settings: "wdth" 75;
+  letter-spacing: 0.06em;
 }

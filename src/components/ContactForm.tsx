@@ -5,11 +5,11 @@ import { sendContact, type ContactState } from "@/app/actions/contact";
 import { site } from "@/content/site";
 
 const field =
-  "mt-2 block w-full min-h-12 rounded-md border border-letter/30 bg-felt px-4 text-lg text-letter placeholder:text-letter-soft aria-[invalid=true]:border-clay";
+  "mt-2 block w-full min-h-12 rounded-md border-2 border-felt/40 bg-white px-4 text-lg text-felt aria-[invalid=true]:border-powder-ink";
 
 function FieldError({ id, text }: { id: string; text?: string }) {
   return text ? (
-    <span id={id} className="mt-1 block text-clay">
+    <span id={id} className="mt-1 block font-semibold text-powder-ink">
       {text}
     </span>
   ) : null;
@@ -58,7 +58,7 @@ export function ContactForm() {
         <FieldError id="err-class" text={err.classSlug} />
       </label>
       <label>
-        Üzenet <span className="text-letter-soft">(nem kötelező)</span>
+        Üzenet <span className="text-felt/75">(nem kötelező)</span>
         <textarea name="message" rows={4} maxLength={2000} defaultValue={v.message} className={`${field} py-3`} aria-invalid={!!err.message} aria-describedby="err-message" />
         <FieldError id="err-message" text={err.message} />
       </label>
@@ -69,11 +69,11 @@ export function ContactForm() {
         </label>
       </div>
       {state.status === "error" && (
-        <p role="alert" className="text-clay">
+        <p role="alert" className="font-semibold text-powder-ink">
           {state.message}
         </p>
       )}
-      <button disabled={pending} className="min-h-12 justify-self-start rounded-full bg-clay px-8 font-semibold text-felt disabled:opacity-60">
+      <button disabled={pending} className="min-h-12 justify-self-start rounded-[3px] bg-clay px-8 font-semibold text-felt disabled:opacity-60">
         {pending ? "Küldés…" : "Elküldöm"}
       </button>
     </form>

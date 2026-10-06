@@ -21,7 +21,7 @@ export function PosterLightbox({ poster, label }: { poster: Img; label: string }
       >
         <Image src={poster.src} alt={poster.alt} width={poster.width} height={poster.height} sizes="640px" className="h-auto max-h-[84svh] w-auto rounded-[4px]" />
         <form method="dialog" className="mt-3 text-right">
-          <button className="min-h-11 rounded-full bg-letter px-6 font-semibold text-felt">Bezárás</button>
+          <button className="min-h-11 rounded-[3px] bg-letter px-6 font-semibold text-felt">Bezárás</button>
         </form>
       </dialog>
     </>

@@ -3,44 +3,42 @@ import { site } from "@/content/site";
 import { isContactFormEnabled } from "@/lib/contact";
 import { ContactForm } from "./ContactForm";
 
+/** Az utolsó kitűzött lap: jelentkezés. */
 export function ContactSection() {
-  const { email, facebookUrl, facebookHandle } = site.contact;
+  const { email, facebookUrl } = site.contact;
+  const formEnabled = isContactFormEnabled();
   return (
-    <section id="kapcsolat" aria-labelledby="kapcsolat-title" className="border-t border-letter/10">
-      <div className="mx-auto grid max-w-[1360px] gap-12 px-4 py-20 md:grid-cols-12 md:px-8 md:py-32">
-        <div className="md:col-span-5">
-          <h2 id="kapcsolat-title" className="font-display text-[clamp(2.2rem,6vw,4.5rem)] font-semibold uppercase leading-[1.1]">
+    <section id="kapcsolat" aria-labelledby="kapcsolat-title" className="py-12 md:py-16">
+      <div className="mx-auto max-w-[1360px] px-4 md:px-8">
+      <div className="relative grid gap-10 bg-letter px-5 pb-10 pt-12 text-felt md:grid-cols-12 md:px-14 md:pb-14 md:pt-16">
+        <span aria-hidden className="absolute -top-3 left-1/2 h-7 w-32 -translate-x-1/2 rotate-[2deg] bg-sun/80" />
+        <div className={formEnabled ? "md:col-span-5" : "md:col-span-12"}>
+          <h2 id="kapcsolat-title" className="font-display text-[clamp(2.2rem,6vw,4.5rem)] font-bold uppercase leading-[1.1]">
             Gyere, táncolj velem!
           </h2>
-          <p className="mt-6 text-xl text-letter-soft">Mindenkit szeretettel várok egy ingyenes próbaórára.</p>
-          <ul className="mt-8 grid gap-2 text-xl">
-            <li>
-              <a className="inline-flex min-h-11 items-center underline underline-offset-4" href={`mailto:${email}`} data-testid="mailto">
-                {email}
-              </a>
-            </li>
-            <li>
-              <a className="inline-flex min-h-11 items-center underline underline-offset-4" href={facebookUrl} target="_blank" rel="noopener">
-                Facebook: {facebookHandle}
-              </a>
-            </li>
-          </ul>
+          <p className="mt-5 max-w-[40ch] text-xl">Mindenkit szeretettel várok egy ingyenes próbaórára. Írj nekem, és megbeszéljük a részleteket.</p>
+          <p className="mt-4 text-xl font-semibold">{email}</p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a
+              href={`mailto:${email}?subject=${encodeURIComponent("Jelentkezés táncórára")}`}
+              className="inline-flex min-h-12 items-center justify-center rounded-[3px] bg-clay px-7 text-lg font-semibold text-felt"
+              data-testid={formEnabled ? "mailto" : "mailto-fallback"}
+            >
+              E-mail írása
+            </a>
+            <a href={facebookUrl} target="_blank" rel="noopener" className="inline-flex min-h-12 items-center justify-center rounded-[3px] border-2 border-felt px-7 text-lg font-semibold">
+              Facebook
+            </a>
+          </div>
         </div>
-        <div className="md:col-span-6 md:col-start-7">
-          {isContactFormEnabled() ? (
+        {formEnabled && (
+          <div className="md:col-span-6 md:col-start-7">
             <Suspense>
               <ContactForm />
             </Suspense>
-          ) : (
-            <a
-              href={`mailto:${email}?subject=${encodeURIComponent("Jelentkezés táncórára")}`}
-              className="inline-flex min-h-12 items-center rounded-full bg-clay px-8 text-lg font-semibold text-felt"
-              data-testid="mailto-fallback"
-            >
-              Írok egy e-mailt
-            </a>
-          )}
-        </div>
+          </div>
+        )}
+      </div>
       </div>
     </section>
   );
