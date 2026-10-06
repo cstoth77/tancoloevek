@@ -1,10 +1,10 @@
-"use client";
-import { motion, useReducedMotion } from "motion/react";
+import type { CSSProperties } from "react";
 
-/** A betűtábla mozdulata: a karakterek egyenként csúsznak a horonyba, amikor láthatóvá válnak. */
+/**
+ * A betűtábla mozdulata: a karakterek egyenként csúsznak a horonyba, ahogy a sor a képbe gördül.
+ * Tisztán CSS (scroll-driven animáció, globals.css: .slot-char) – JS nélkül és támogatás híján a szöveg egyszerűen látszik.
+ */
 export function SlotText({ text }: { text: string }) {
-  const reduce = useReducedMotion();
-  if (reduce) return <>{text}</>;
   let i = 0;
   return (
     <>
@@ -13,18 +13,11 @@ export function SlotText({ text }: { text: string }) {
         {text.split(" ").map((word, w) => (
           <span key={w} className="inline-block whitespace-nowrap">
             {[...word].map((ch) => {
-              const delay = i++ * 0.035;
+              const n = i++;
               return (
-                <motion.span
-                  key={delay}
-                  className="inline-block"
-                  initial={{ y: "0.5em", opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true, margin: "-10% 0px" }}
-                  transition={{ delay, duration: 0.28, ease: "easeOut" }}
-                >
+                <span key={n} className="slot-char inline-block" style={{ "--i": n } as CSSProperties}>
                   {ch}
-                </motion.span>
+                </span>
               );
             })}
             {" "}

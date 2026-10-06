@@ -36,3 +36,20 @@ body {
     scroll-behavior: auto;
   }
 }
+
+/* Betűtábla: karakterenként becsúszó időpontok (csak ha a böngésző tudja és a látogató nem kért csökkentett mozgást) */
+@keyframes slot-in {
+  from {
+    transform: translateY(0.55em);
+    opacity: 0;
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .slot-char {
+      animation: slot-in linear both;
+      animation-timeline: view();
+      animation-range: entry calc(10% + var(--i) * 4%) entry calc(45% + var(--i) * 4%);
+    }
+  }
+}
