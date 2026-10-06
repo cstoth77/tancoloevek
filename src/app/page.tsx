@@ -1,3 +1,4 @@
+import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 import { MobileActionBar, Nav } from "@/components/Nav";
 
@@ -9,7 +10,7 @@ export default function Home() {
         <section id="orak" />
         <section id="rolam" />
         <section id="helyszin" />
-        <section id="kapcsolat" />
+        <ContactSection />
       </main>
       <Footer />
       <MobileActionBar />
