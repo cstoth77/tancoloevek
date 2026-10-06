@@ -6,6 +6,7 @@ import { Hero } from "@/components/Hero";
 import { MobileActionBar, Nav } from "@/components/Nav";
 import { Venue } from "@/components/Venue";
 import { site } from "@/content/site";
+import { buildJsonLd } from "@/lib/jsonld";
 
 /** Naponta újraépül, hogy a lejárt egyszeri időpontok eltűnjenek. */
 export const revalidate = 86400;
@@ -13,6 +14,10 @@ export const revalidate = 86400;
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildJsonLd(new Date())).replace(/</g, "\\u003c") }}
+      />
       <Nav />
       <main id="top">
         <Hero />
