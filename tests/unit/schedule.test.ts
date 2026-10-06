@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { formatSlot, slotParts, visibleSlots } from "@/lib/schedule";
+import { formatSlot, slotParts, slotShort, visibleSlots } from "@/lib/schedule";
 import type { Slot } from "@/content/site";
 
 const weeklyTue: Slot = { kind: "weekly", weekday: "kedd", start: "18:00", end: "19:00" };
@@ -37,5 +37,15 @@ describe("slotParts", () => {
   });
   test("egyszeri: címke, dátum és idő", () => {
     expect(slotParts(once)).toEqual({ day: "Első óra: 2026. október 14., szerda", time: "9:00–10:00" });
+  });
+});
+
+describe("slotShort (betűtábla-sor)", () => {
+  test("heti: nap + kezdés nagybetűvel", () => {
+    expect(slotShort(weeklyTue)).toBe("KEDD 18:00");
+    expect(slotShort(weeklyWed)).toBe("SZERDA 10:00");
+  });
+  test("egyszeri: rövid dátum + nap + kezdés", () => {
+    expect(slotShort(once)).toBe("OKT. 14. SZERDA 9:00");
   });
 });
