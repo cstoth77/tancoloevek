@@ -55,4 +55,14 @@ Web. Elsődleges méret: **mobil** (a látogatók jellemzően Facebookról, tele
 Kék-fehér SaaS hero; középre zárt hero + 3 egyforma kártya; `rounded-2xl` mindenhol; glow, árnyék, gradiens; emoji az UI-ban; stock-ikonsor a highlightoknál.
 
 ## Figma
-(Task 4 tölti ki.)
+https://www.figma.com/design/iVnfcurht1PJm1TDl24Y6m
+
+- **Oldaltervek** oldal: `Desktop 1440` és `Mobile 390` – a végleges (critic loop utáni) kód pixelpontos rögzítése (html-to-design capture, reduced-motion állapot: a hero videó helyén a poszterkép).
+- **Hanna tokens** változógyűjtemény: 12 szín, 9 térköz, 2 sarokkerekítés, megfelelő scope-okkal; mellette `Tokens – színek` minta-tábla a változókhoz kötve.
+- A betűtípusok (Unbounded, Atkinson Hyperlegible Next, Martian Mono) Google Fonts-ból elérhetők a Figmában is.
+
+## Felülírt seed-döntések (critic loop)
+- Gombok: pill → 3px-es „címkéző” téglalap (a kritikus 3 körön át template-elemnek ítélte).
+- Képek: 28px-es lekerekítés → ragasztott fotóprint fehér szegéllyel (a ragasztószalaggal ütközött).
+- Szekciócímek és adatok: Martian Mono (wdth 75) betűtábla-betű; a széles Unbounded a hero szlogenre és a papírlapokra korlátozva.
+- Időpontok animációja: motion helyett tisztán CSS scroll-driven (JS nélkül is olvasható).
