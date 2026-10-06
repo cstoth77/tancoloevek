@@ -1,4 +1,5 @@
 import { site } from "@/content/site";
+import { budapestDay } from "@/lib/schedule";
 import { Letterboard } from "./Letterboard";
 import { LoopVideo } from "./LoopVideo";
 
@@ -17,7 +18,7 @@ export function Hero() {
           <p className="mt-4 max-w-[34ch] text-xl md:mt-5 md:text-2xl">{hero.sub}</p>
         </div>
         <div className="md:col-span-6 md:col-start-7">
-          <Letterboard />
+          <Letterboard serverToday={budapestDay(new Date())} />
         </div>
         <p className="sr-only">
           {teacher.name}, {teacher.role}

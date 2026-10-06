@@ -1,9 +1,11 @@
+"use client";
 import { site } from "@/content/site";
-import { slotShort, visibleSlots } from "@/lib/schedule";
+import { slotShort, visibleSlotsOn } from "@/lib/schedule";
+import { useBudapestToday } from "@/lib/use-budapest-today";
 
 /** A hero cserélhető betűs táblája: mindkét óra időpontja már az első képernyőn. */
-export function Letterboard() {
-  const now = new Date();
+export function Letterboard({ serverToday }: { serverToday: string }) {
+  const today = useBudapestToday(serverToday);
   return (
     <div className="letterboard border-4 border-[#a39a8f] px-5 py-5 md:px-8 md:py-7" aria-labelledby="tabla-title">
       <p id="tabla-title" className="text-lg font-semibold uppercase leading-[2.25rem] tracking-[0.24em] text-letter-soft">
@@ -11,7 +13,7 @@ export function Letterboard() {
       </p>
       <ul className="grid gap-3">
         {site.classes.map((c) => {
-          const slots = visibleSlots(c.slots, now);
+          const slots = visibleSlotsOn(c.slots, today);
           return (
             <li key={c.slug}>
               <a href={`#${c.slug}-title`} className="group block uppercase">

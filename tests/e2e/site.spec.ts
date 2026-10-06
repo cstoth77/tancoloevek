@@ -55,3 +55,13 @@ test("JSON-LD érvényes és tartalmazza a táncsulit", async ({ page }) => {
   const data = JSON.parse(raw ?? "[]") as { "@type": string }[];
   expect(data.map((d) => d["@type"])).toEqual(expect.arrayContaining(["Person", "DanceSchool"]));
 });
+
+test("elavult (cache-elt) HTML esetén is eltűnik a lejárt egyszeri időpont", async ({ page }) => {
+  // a build október 14. előtt készült; a látogató október 16-án nyitja meg
+  await page.clock.setFixedTime(new Date("2026-10-16T10:00:00+02:00"));
+  await page.goto("/");
+  await expect(page.getByText("OKT. 14. SZERDA 9:00")).toHaveCount(0);
+  await expect(page.getByText("Írj az időpontért")).toBeVisible();
+  await expect(page.getByText("Írj nekem az aktuális időpontokért!")).toHaveCount(1);
+  await expect(page.getByText("KEDD 18:00")).toBeVisible();
+});

@@ -1,10 +1,12 @@
+"use client";
 import type { Slot } from "@/content/site";
-import { slotParts, visibleSlots } from "@/lib/schedule";
+import { slotParts, visibleSlotsOn } from "@/lib/schedule";
+import { useBudapestToday } from "@/lib/use-budapest-today";
 import { SlotText } from "./SlotText";
 
 /** Az időpontok közvetlenül a papírlapon – a lap legnagyobb betűi. */
-export function ScheduleList({ slots }: { slots: Slot[] }) {
-  const shown = visibleSlots(slots, new Date());
+export function ScheduleList({ slots, serverToday }: { slots: Slot[]; serverToday: string }) {
+  const shown = visibleSlotsOn(slots, useBudapestToday(serverToday));
   if (shown.length === 0) {
     return <p className="font-display text-xl font-semibold uppercase leading-snug">Írj nekem az aktuális időpontokért!</p>;
   }

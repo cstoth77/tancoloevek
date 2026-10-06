@@ -31,13 +31,17 @@ export function formatSlot(slot: Slot): string {
 }
 
 /** Budapesti naptári nap (YYYY-MM-DD) – a Vercel UTC-ben fut. */
-function budapestDay(now: Date): string {
+export function budapestDay(now: Date): string {
   return new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Budapest" }).format(now);
 }
 
-export function visibleSlots(slots: Slot[], now: Date): Slot[] {
-  const today = budapestDay(now);
+/** A heti időpontok mindig, az egyszeri időpontok a megadott (budapesti) naptól látszanak. */
+export function visibleSlotsOn(slots: Slot[], today: string): Slot[] {
   return slots.filter((s) => s.kind === "weekly" || s.date >= today);
+}
+
+export function visibleSlots(slots: Slot[], now: Date): Slot[] {
+  return visibleSlotsOn(slots, budapestDay(now));
 }
 
 const MONTHS_SHORT = ["JAN.", "FEBR.", "MÁRC.", "ÁPR.", "MÁJ.", "JÚN.", "JÚL.", "AUG.", "SZEPT.", "OKT.", "NOV.", "DEC."];

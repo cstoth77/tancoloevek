@@ -1,4 +1,5 @@
 import type { DanceClass } from "@/content/site";
+import { budapestDay } from "@/lib/schedule";
 import { PosterLightbox } from "./PosterLightbox";
 import { Print } from "./Print";
 import { ScheduleList } from "./ScheduleList";
@@ -41,7 +42,7 @@ export function ClassBlock({ cls, index }: { cls: DanceClass; index: number }) {
         </h3>
         <p className="mt-5 max-w-[46ch] text-xl">{cls.intro}</p>
         <div className="mt-8">
-          <ScheduleList slots={cls.slots} />
+          <ScheduleList slots={cls.slots} serverToday={budapestDay(new Date())} />
         </div>
         {cls.joinAnytime && <p className="mt-3 text-lg">Az órákhoz folyamatosan lehet csatlakozni.</p>}
         <ul className="mt-8 grid gap-y-2 text-lg">

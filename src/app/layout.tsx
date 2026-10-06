@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Atkinson_Hyperlegible_Next, Martian_Mono, Unbounded } from "next/font/google";
+import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const display = Unbounded({ subsets: ["latin", "latin-ext"], variable: "--font-display-face", display: "swap" });
@@ -7,7 +8,7 @@ const board = Martian_Mono({ subsets: ["latin", "latin-ext"], variable: "--font-
 const body = Atkinson_Hyperlegible_Next({ subsets: ["latin", "latin-ext"], variable: "--font-body-face", display: "swap", adjustFontFallback: false });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(siteUrl()),
   title: "Hallgat Hanna – táncórák Rákoskeresztúron",
   description: "Anya–baba tánc és Táncoló Évek 50+ táncórák az Allstars Dance Studióban. Ingyenes próbaóra.",
   openGraph: { locale: "hu_HU", type: "website" },
