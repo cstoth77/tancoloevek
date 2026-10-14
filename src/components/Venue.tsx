@@ -35,7 +35,7 @@ export function Venue() {
           {!showMap && <p className="mt-3 text-base md:col-span-12">A térkép a Google Maps-ről töltődik be.</p>}
           {showMap && (
             <div className="mt-8 aspect-[4/3] w-full border-4 border-sun-ink/80 md:col-span-12 md:aspect-[16/7]">
-              <iframe title={`Térkép: ${v.name}`} src={v.mapsEmbedUrl} className="h-full w-full" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+              <iframe title={`Térkép: ${v.name}`} src={v.mapsEmbedUrl} className="h-full w-full" loading="lazy" referrerPolicy="strict-origin-when-cross-origin" />
             </div>
           )}
         </div>

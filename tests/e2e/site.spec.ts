@@ -65,3 +65,12 @@ test("elavult (cache-elt) HTML esetén is eltűnik a lejárt egyszeri időpont",
   await expect(page.getByText("Írj nekem az aktuális időpontokért!")).toHaveCount(1);
   await expect(page.getByText("KEDD 18:00")).toBeVisible();
 });
+
+test("biztonsági fejlécek: CSP, keretbe ágyazás tiltása, nosniff", async ({ request }) => {
+  const res = await request.get("/");
+  const h = res.headers();
+  expect(h["content-security-policy"]).toContain("frame-ancestors 'none'");
+  expect(h["content-security-policy"]).toContain("object-src 'none'");
+  expect(h["x-content-type-options"]).toBe("nosniff");
+  expect(h["referrer-policy"]).toBe("strict-origin-when-cross-origin");
+});
