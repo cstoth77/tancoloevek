@@ -16,7 +16,7 @@ export function ContactSection() {
           <h2 id="kapcsolat-title" className="font-display text-[clamp(2.2rem,6vw,4.5rem)] font-bold uppercase leading-[1.1]">
             Gyere, táncolj velem!
           </h2>
-          <p className="mt-5 max-w-[40ch] text-xl">Mindenkit szeretettel várok egy ingyenes próbaórára. Írj nekem, és megbeszéljük a részleteket.</p>
+          <p className="mt-5 max-w-[40ch] text-xl">Mindenkit szeretettel várok az óráimon. Írj nekem, és megbeszéljük a részleteket.</p>
           <p className="mt-4 text-xl font-semibold">{email}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a

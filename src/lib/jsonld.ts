@@ -17,7 +17,7 @@ export function buildJsonLd(now: Date, classes: DanceClass[] = site.classes): ob
   const place = { "@type": "Place", name: v.name, address };
   const out: object[] = [
     { "@context": "https://schema.org", "@type": "Person", name: site.teacher.name, jobTitle: site.teacher.role, email: site.contact.email },
-    { "@context": "https://schema.org", "@type": "DanceSchool", name: `${site.teacher.name} táncórái`, email: site.contact.email, address },
+    { "@context": "https://schema.org", "@type": "DanceSchool", name: site.name, email: site.contact.email, address },
   ];
   for (const c of classes) {
     for (const s of visibleSlots(c.slots, now)) {

@@ -13,7 +13,7 @@ export function Nav() {
     <header className="fixed inset-x-0 top-0 z-40 border-b border-letter/10 bg-felt-raised/95">
       <nav aria-label="Fő navigáció" className="mx-auto flex max-w-[1360px] items-center justify-between gap-6 px-4 py-2 md:px-8">
         <a href="#top" className="inline-flex min-h-11 items-center font-display text-sm font-semibold uppercase tracking-[0.18em]">
-          {site.teacher.name}
+          {site.name}
         </a>
         <ul className="hidden gap-8 md:flex">
           {LINKS.map((l) => (

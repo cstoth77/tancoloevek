@@ -9,8 +9,8 @@ const body = Atkinson_Hyperlegible_Next({ subsets: ["latin", "latin-ext"], varia
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
-  title: "Hallgat Hanna – táncórák Rákoskeresztúron",
-  description: "Anya–baba tánc és Táncoló Évek 50+ táncórák az Allstars Dance Studióban. Ingyenes próbaóra.",
+  title: "Táncoló Évek – Hallgat Hanna táncórái Rákoskeresztúron",
+  description: "Anya–baba tánc és Táncoló Évek 50+ táncórák az Allstars Dance Studióban.",
   openGraph: { locale: "hu_HU", type: "website" },
 };
 

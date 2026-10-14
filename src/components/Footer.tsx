@@ -9,9 +9,8 @@ export function Footer() {
         <a className="inline-flex min-h-11 items-center tracking-[0.06em] normal-case underline underline-offset-4" href={`mailto:${site.contact.email}`}>
           {site.contact.email}
         </a>
-        <p className="text-sm tracking-[0.12em] text-letter-soft">Partnereink: {site.partners.join(" · ")}</p>
         <p className="text-sm tracking-[0.12em] text-letter-soft">
-          © {new Date().getFullYear()} {site.teacher.name}
+          © {new Date().getFullYear()} {site.name} · {site.teacher.name}
         </p>
       </div>
     </footer>

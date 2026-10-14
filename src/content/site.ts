@@ -41,7 +41,7 @@ const classes: DanceClass[] = [
     poster: { src: "/posters/anya-baba.jpg", alt: "Táncolj együtt a babáddal! – az óra plakátja", width: 1067, height: 2093 },
     image: { src: "/media/anya-baba.jpg", alt: "Anyuka hordozókendőben táncol a babájával egy napfényes stúdióban", width: 1612, height: 2000 },
     accent: "powder",
-    freeTrial: true,
+    freeTrial: false,
     joinAnytime: false,
   },
   {
@@ -65,26 +65,27 @@ const classes: DanceClass[] = [
     poster: { src: "/posters/tancolo-evek.png", alt: "Táncoló Évek – az óra plakátja", width: 1024, height: 1536 },
     image: { src: "/media/tancolo-evek.jpg", alt: "Mosolygó, 50 év feletti táncosok egy világos stúdióban", width: 1612, height: 2000 },
     accent: "sun",
-    freeTrial: true,
+    freeTrial: false,
     joinAnytime: true,
   },
 ];
 
 export const site = {
+  name: "Táncoló Évek",
   teacher: { name: "Hallgat Hanna", role: "Táncművész, tánctanár" },
   hero: {
     kicker: "Táncórák Budapesten, Rákoskeresztúron",
     headline: "Mozdulj velem a zenére.",
     sub: "Felszabadult, jókedvű táncórák – tánctapasztalat nélkül is.",
-    cta: "Ingyenes próbaóra",
+    cta: "Jelentkezem",
   },
   about: {
     heading: "Rólam pár szó",
     paragraphs: [
-      "Hallgat Hanna vagyok, táncművésznek tanultam. Mindig is közel állt hozzám a tánc, a mozgás és a tanítás.",
+      "Hallgat Hanna vagyok, táncművésznek tanultam. Mindig is közel állt hozzám a tánc, a mozgás és a tanítás. Hiszek abban, hogy a tánc nemcsak mozgás, hanem öröm, önkifejezés és közösségi élmény is, amelyet szeretnék minél több emberrel megosztani.",
       "Szeretném, ha az óráimon mindenki felszabadultan, jókedvűen mozogna, függetlenül attól, hogy van-e korábbi tánctapasztalata.",
     ],
-    photo: { src: "/media/hanna.jpg", alt: "Táncos lábak a stúdió fapadlóján", width: 1570, height: 2000 } as Img,
+    photo: { src: "/media/hanna-portre.jpg", alt: "Hallgat Hanna mosolyogva, fekete háttér előtt", width: 1365, height: 2048 } as Img,
   },
   venue: {
     name: "Allstars Dance Studio",
@@ -97,10 +98,7 @@ export const site = {
   },
   contact: {
     email: "tancoloevek@gmail.com",
-    facebookHandle: "@AktívSzeniorTánc",
-    // TODO: a pontos Facebook-oldal URL-t Hannától kérjük el; addig keresési link.
-    facebookUrl: "https://www.facebook.com/search/top?q=Akt%C3%ADv%20Szenior%20T%C3%A1nc",
+    facebookUrl: "https://www.facebook.com/profile.php?id=61594872557451",
   },
-  partners: ["Közösségi Élet Központ", "Szenior Aktivitás Egyesület"],
   classes,
 };

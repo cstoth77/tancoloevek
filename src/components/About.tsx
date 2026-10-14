@@ -10,7 +10,7 @@ export function About() {
       <BoardHeading id="rolam-title" className="md:col-span-12 md:justify-self-start">
         {about.heading}
       </BoardHeading>
-      <Print img={about.photo} sizes="(min-width: 768px) 30vw, 100vw" tape="left-8 -rotate-[4deg] bg-sun/75" className="mx-6 aspect-[4/3] md:col-span-4 md:mx-0 md:aspect-[4/5] md:-rotate-[1deg]" />
+      <Print img={about.photo} sizes="(min-width: 768px) 30vw, 100vw" imgClassName="object-top" tape="left-8 -rotate-[4deg] bg-sun/75" className="mx-6 aspect-[4/5] md:col-span-4 md:mx-0 md:aspect-[4/5] md:-rotate-[1deg]" />
       <div className="relative bg-powder px-5 pb-8 pt-10 text-powder-ink md:col-span-7 md:col-start-6 md:px-12 md:py-12">
         <span aria-hidden className="absolute -top-3 right-12 h-7 w-28 rotate-[3deg] bg-tape/85" />
         {about.paragraphs.map((p, i) => (

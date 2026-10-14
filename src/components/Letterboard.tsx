@@ -29,7 +29,7 @@ export function Letterboard({ serverToday }: { serverToday: string }) {
         })}
       </ul>
       <a href="#kapcsolat" className="mt-2 inline-flex min-h-11 items-center text-base font-semibold uppercase tracking-[0.2em] text-clay underline-offset-4 hover:underline">
-        Ingyenes próbaóra →
+        Jelentkezés →
       </a>
     </div>
   );
