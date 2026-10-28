@@ -17,7 +17,7 @@ export function ScheduleList({ slots, serverToday }: { slots: Slot[]; serverToda
         return (
           <li key={`${day}${time}`}>
             <p className="text-base font-semibold uppercase tracking-[0.16em]">{day}</p>
-            <p className="whitespace-nowrap font-display text-[clamp(1.6rem,7.2vw,4rem)] font-bold leading-[1.1] tabular-nums">
+            <p className="whitespace-nowrap font-display text-[clamp(1.6rem,10.5cqi,3.6rem)] font-bold leading-[1.1] tabular-nums">
               <SlotText text={time} />
             </p>
           </li>

@@ -33,20 +33,20 @@ export function ClassBlock({ cls, index }: { cls: DanceClass; index: number }) {
         imgClassName="object-top"
         tape={pin.printTape}
         sizes="(min-width: 768px) 40vw, 100vw"
-        className={`order-2 mx-6 aspect-[4/3] md:mx-0 md:aspect-auto ${pin.print} ${flip ? "md:order-2 md:col-span-5" : "md:order-1 md:col-span-5"}`}
+        className={`order-2 mx-6 aspect-[4/3] md:mx-0 ${cls.more ? "md:sticky md:top-24 md:aspect-[4/5] md:self-start" : "md:aspect-auto"} ${pin.print} ${flip ? "md:order-2 md:col-span-5" : "md:order-1 md:col-span-5"}`}
       />
-      <div className={`relative order-1 ${PAPER[cls.accent]} px-5 pb-8 pt-10 md:col-span-7 md:px-12 md:pb-12 md:pt-14 ${pin.notice} ${flip ? "md:order-1" : "md:order-2"}`}>
+      <div className={`@container relative order-1 ${PAPER[cls.accent]} px-5 pb-8 pt-10 md:col-span-7 md:px-10 md:pb-10 md:pt-12 ${pin.notice} ${flip ? "md:order-1" : "md:order-2"}`}>
         <span aria-hidden className={`absolute -top-3 h-7 ${pin.noticeTape}`} />
         <p className="text-base font-bold uppercase tracking-[0.12em]">{cls.audience}</p>
-        <h3 id={`${cls.slug}-title`} className="mt-3 scroll-mt-24 font-display text-[clamp(1.9rem,4.5vw,3.4rem)] font-bold uppercase leading-[1.1]">
+        <h3 id={`${cls.slug}-title`} className="mt-3 scroll-mt-24 font-display text-[clamp(1.9rem,8cqi,3.2rem)] font-bold uppercase leading-[1.1]">
           {cls.title}
         </h3>
-        <p className="mt-5 max-w-[46ch] text-xl">{cls.intro}</p>
-        <div className="mt-8">
+        <p className="mt-4 max-w-[46ch] text-xl">{cls.intro}</p>
+        <div className="mt-6">
           <ScheduleList slots={cls.slots} serverToday={budapestDay(new Date())} />
         </div>
         {cls.joinAnytime && <p className="mt-3 text-lg">Az órákhoz folyamatosan lehet csatlakozni.</p>}
-        <ul className="mt-8 grid gap-y-2 text-lg">
+        <ul className="mt-6 grid gap-y-2 text-lg">
           {cls.highlights.map((h) => (
             <li key={h} className="flex gap-3">
               <span aria-hidden>—</span>
@@ -76,7 +76,7 @@ export function ClassBlock({ cls, index }: { cls: DanceClass; index: number }) {
             </ul>
           </details>
         )}
-        <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-6">
+        <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-6">
           <a href={`/?ora=${cls.slug}#kapcsolat`} className="inline-flex min-h-12 items-center justify-center rounded-[3px] bg-clay px-7 text-lg font-semibold text-felt">
             Jelentkezem
           </a>
