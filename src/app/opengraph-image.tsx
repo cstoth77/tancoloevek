@@ -21,7 +21,7 @@ export default async function Image() {
         <div style={{ position: "absolute", left: 64, bottom: 64, display: "flex", flexDirection: "column", color: "#f4ece0", fontFamily: "Unbounded" }}>
           <div style={{ fontSize: 26, letterSpacing: 6, color: "#c4b6a6" }}>TÁNCÓRÁK RÁKOSKERESZTÚRON</div>
           <div style={{ fontSize: 88, lineHeight: 1.1, marginTop: 16 }}>{site.name.toUpperCase()}</div>
-          <div style={{ fontSize: 30, marginTop: 20, color: "#d9774a" }}>{`${site.teacher.name} · Anya–baba tánc · Táncoló Évek 50+`}</div>
+          <div style={{ fontSize: 30, marginTop: 20, color: "#d9774a" }}>{`${site.teacher.name} · Broadway Jazz & Show Tánc · Táncoló Évek 50+`}</div>
         </div>
       </div>
     ),

@@ -3,7 +3,7 @@ import { z } from "zod";
 export const contactSchema = z.object({
   name: z.string().trim().min(2, "Kérlek, add meg a neved.").max(80, "Legfeljebb 80 karakter."),
   email: z.email("Kérlek, érvényes e-mail címet adj meg."),
-  classSlug: z.enum(["anya-baba", "tancolo-evek", "egyeb"], "Válaszd ki, melyik óra érdekel."),
+  classSlug: z.enum(["broadway", "tancolo-evek", "egyeb"], "Válaszd ki, melyik óra érdekel."),
   message: z.string().trim().max(2000, "Legfeljebb 2000 karakter.").default(""),
   website: z.string().default(""),
 });

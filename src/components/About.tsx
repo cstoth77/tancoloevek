@@ -18,6 +18,17 @@ export function About() {
             {p}
           </p>
         ))}
+        <details className="group mt-5">
+          <summary className="inline-flex min-h-11 cursor-pointer list-none items-center font-semibold underline underline-offset-4 [&::-webkit-details-marker]:hidden">
+            <span className="group-open:hidden">Bővebben</span>
+            <span className="hidden group-open:inline">Kevesebb</span>
+          </summary>
+          {about.more.map((p) => (
+            <p key={p} className="mt-4 max-w-[60ch] text-lg">
+              {p}
+            </p>
+          ))}
+        </details>
       </div>
     </section>
   );

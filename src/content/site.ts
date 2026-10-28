@@ -3,7 +3,7 @@ export type Slot =
   | { kind: "weekly"; weekday: Weekday; start: string; end: string }
   | { kind: "once"; date: string; start: string; end: string; label: string };
 export type Img = { src: string; alt: string; width: number; height: number };
-export type ClassSlug = "anya-baba" | "tancolo-evek";
+export type ClassSlug = "broadway" | "tancolo-evek";
 export type DanceClass = {
   slug: ClassSlug;
   title: string;
@@ -13,6 +13,8 @@ export type DanceClass = {
   audience: string;
   intro: string;
   highlights: string[];
+  /** Hosszabb leírás a „Bővebben” mögött. */
+  more?: { paragraphs: string[]; forWhom: string[] };
   slots: Slot[];
   poster: Img;
   image: Img;
@@ -23,23 +25,37 @@ export type DanceClass = {
 
 const classes: DanceClass[] = [
   {
-    slug: "anya-baba",
-    title: "Táncolj együtt a babáddal!",
-    shortTitle: "Anya–baba tánc",
-    tagline: "Mozgás • zene • közös élmény",
-    audience: "Anyukáknak, hordozott babával",
+    slug: "broadway",
+    title: "Broadway Jazz & Show Tánc",
+    shortTitle: "Broadway Jazz & Show",
+    tagline: "Tánc • zene • élmény",
+    audience: "Felnőtteknek",
     intro:
-      "Egy vidám, könnyed és bababarát táncos óra anyukáknak, ahol a babádat biztonságosan magadra kötve együtt mozoghattok a zenére.",
+      "Lépj be a színházi táncok izgalmas, nőies és lendületes világába! Szereted a musicalek hangulatát, a látványos koreográfiákat és az igazán karakteres zenéket?",
     highlights: [
-      "Baba közel hozzád",
-      "Vidám, könnyen követhető táncok",
-      "Mozgás és feltöltődés az anyukának",
-      "Közös élmény, kapcsolódás és sok-sok mosoly",
-      "Kezdőket is szeretettel várlak",
+      "Látványos koreográfiák",
+      "Nőies mozgás",
+      "Testtudat és koordináció",
+      "Felszabadult hangulat",
+      "Nem számít, ha még sosem táncoltál!",
     ],
-    slots: [{ kind: "once", date: "2026-10-14", start: "9:00", end: "10:00", label: "Első óra" }],
-    poster: { src: "/posters/anya-baba.jpg", alt: "Táncolj együtt a babáddal! – az óra plakátja", width: 1067, height: 2093 },
-    image: { src: "/media/anya-baba.jpg", alt: "Anyuka hordozókendőben táncol a babájával egy napfényes stúdióban", width: 1612, height: 2000 },
+    more: {
+      paragraphs: [
+        "A Broadway Jazz & Show Tánc órákon a színházi világ inspirálta mozgásformák, a zene és a felszabadult tánc találkoznak.",
+        "Az órák során különböző zenei stílusokhoz és hangulatokhoz illő koreográfiákat tanulunk, miközben fejlesztjük a ritmusérzéket, a koordinációt, a testtudatot és a szép testtartást. A hangsúly a mozgás örömén, az önkifejezésen és azon van, hogy mindenki megtalálja a saját stílusát.",
+        "Nem szükséges előzetes tánctudás vagy különleges hajlékonyság! Az órákon kezdőként is bátran részt vehetsz, hiszen a cél nem a tökéletesség, hanem a fejlődés, az élmény és az önfeledt kikapcsolódás.",
+        "A tematika folyamatosan változik: új zenék, különböző hangulatok és izgalmas koreográfiák várnak, így mindig tartogatunk valami újat.",
+      ],
+      forWhom: [
+        "Ha szeretnél kiszakadni a hétköznapokból, és időt szánni önmagadra.",
+        "Ha vonz a musicalek és a színházi táncok világa.",
+        "Ha szívesen tanulnál nőies, látványos koreográfiákat.",
+        "Ha szeretnél magabiztosabban mozogni, és közben jól érezni magad.",
+      ],
+    },
+    slots: [],
+    poster: { src: "/posters/broadway.png", alt: "Broadway Jazz & Show Tánc felnőtteknek – az óra plakátja", width: 1024, height: 1536 },
+    image: { src: "/media/broadway.jpg", alt: "Fekete ruhás táncosnő jazz-pózban, színpadi fények előtt", width: 384, height: 480 },
     accent: "powder",
     freeTrial: false,
     joinAnytime: false,
@@ -84,6 +100,15 @@ export const site = {
     paragraphs: [
       "Hallgat Hanna vagyok, táncművésznek tanultam. Mindig is közel állt hozzám a tánc, a mozgás és a tanítás. Hiszek abban, hogy a tánc nemcsak mozgás, hanem öröm, önkifejezés és közösségi élmény is, amelyet szeretnék minél több emberrel megosztani.",
       "Szeretném, ha az óráimon mindenki felszabadultan, jókedvűen mozogna, függetlenül attól, hogy van-e korábbi tánctapasztalata.",
+    ],
+    more: [
+      "A Nemes Nagy Ágnes Művészeti Szakgimnáziumban tanultam (2021–2026), ahol 2026-ban megszereztem a Színházi Táncos II. végzettséget. A képzés során sok műfajban mélyülhettem el: klasszikus balett, modern- és jazz-balett, partnering, show-tánc, hip-hop, Limón technika, társastánc, néptánc és akrobatika.",
+      "15 éve táncolok; színházi táncos növendékként a klasszikus balett alapjaira építkeztem, és azóta sokféle tánctechnikai, színpadi és musical tapasztalatot gyűjtöttem. A Gregor József Általános Iskolában 8 évig tanultam zenét, énekeltem a kórusban, és egyéni énekversenyeken is kipróbáltam magam.",
+      "Az alapokat az Ékszer Balett Táncegyesületben szereztem: 2020-ban klasszikus balett alapvizsgát tettem, emellett spicc technikát, jazz-balettet, steppet, mazsorettet és akrobatikát tanultam. Többször is az idősebb korosztályba soroltak. 2019 és 2021 között a balett társulat fizetett tagjaként rendszeresen felléptem a Stefánia Palotában, ahol olyan hivatásos balettművészekkel dolgozhattam együtt, mint Csizmadia Tamás, Csuja Gergely és Gajárszky Márton. Színpadra álltam többek között a Hófehérke, a Hattyúk tava, az Anasztázia, a Jégvarázs, a Szépség és a Szörny, az Aladdin, a Bűbáj, az Oroszlánkirály és a Diótörő előadásaiban.",
+      "A színház és a musical világát is korán megismertem: az iskolai musical szakkörben kiemelt táncos szerepeket kaptam a Shrek, a Matilda és A kis hableány előadásaiban. 2020-ban nyertes tehetségprogram-pályázatommal a jelmezek, a díszlet és az előadásrészletek megvalósításában is részt vettem.",
+      "Néhány pillanat, amire különösen büszke vagyok: 2022-ben a Nemzeti Színházban táncoltam az Ádámok és Évák című előadásban, 2023-ban Magyarországot képviselve csapatunkkal különdíjat nyertünk a Szarajevói Nemzetközi Fesztiválon, 2025-ben pedig Góbi Ritával alkottunk együtt a The End of a Chapter című projektben.",
+      "Jelenleg óvodásoknak és kisiskolásoknak tanítok klasszikus balettet, felnőtteknek pedig táncórákat tartok, mert szeretném, ha a mozgás és a tánc öröme mindenkinek elérhető lenne.",
+      "A munkámban fontos számomra a pontos balett technika, a magabiztos színpadi jelenlét, a kitartás és a fegyelem, és mindezt csapatszellemmel és az előadóművészet iránti elhivatottsággal szeretném továbbadni.",
     ],
     photo: { src: "/media/hanna-portre.jpg", alt: "Hallgat Hanna mosolyogva, fekete háttér előtt", width: 1365, height: 2048 } as Img,
   },

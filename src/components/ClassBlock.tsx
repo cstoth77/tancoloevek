@@ -30,6 +30,7 @@ export function ClassBlock({ cls, index }: { cls: DanceClass; index: number }) {
     <article aria-labelledby={`${cls.slug}-title`} className="grid gap-10 md:grid-cols-12 md:items-stretch">
       <Print
         img={cls.image}
+        imgClassName="object-top"
         tape={pin.printTape}
         sizes="(min-width: 768px) 40vw, 100vw"
         className={`order-2 mx-6 aspect-[4/3] md:mx-0 md:aspect-auto ${pin.print} ${flip ? "md:order-2 md:col-span-5" : "md:order-1 md:col-span-5"}`}
@@ -53,6 +54,28 @@ export function ClassBlock({ cls, index }: { cls: DanceClass; index: number }) {
             </li>
           ))}
         </ul>
+        {cls.more && (
+          <details className="group mt-6">
+            <summary className="inline-flex min-h-11 cursor-pointer list-none items-center font-semibold underline underline-offset-4 [&::-webkit-details-marker]:hidden">
+              <span className="group-open:hidden">Bővebben</span>
+              <span className="hidden group-open:inline">Kevesebb</span>
+            </summary>
+            {cls.more.paragraphs.map((p) => (
+              <p key={p} className="mt-4 max-w-[60ch] text-lg">
+                {p}
+              </p>
+            ))}
+            <p className="mt-6 text-base font-bold uppercase tracking-[0.12em]">Kinek ajánlom?</p>
+            <ul className="mt-3 grid gap-y-2 text-lg">
+              {cls.more.forWhom.map((h) => (
+                <li key={h} className="flex gap-3">
+                  <span aria-hidden>♡</span>
+                  <span>{h}</span>
+                </li>
+              ))}
+            </ul>
+          </details>
+        )}
         <div className="mt-10 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-6">
           <a href={`/?ora=${cls.slug}#kapcsolat`} className="inline-flex min-h-12 items-center justify-center rounded-[3px] bg-clay px-7 text-lg font-semibold text-felt">
             Jelentkezem

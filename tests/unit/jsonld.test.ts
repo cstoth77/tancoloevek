@@ -5,12 +5,13 @@ import { site } from "@/content/site";
 type Node = Record<string, unknown> & { "@type": string };
 
 test("Person + DanceSchool mindig, Event csak jövőbeli egyszeri időpontra", () => {
-  const before = buildJsonLd(new Date("2026-10-06T12:00:00+02:00")) as Node[];
+  const once = { ...site.classes[0], slots: [{ kind: "once" as const, date: "2026-10-14", start: "9:00", end: "10:00", label: "Első óra" }] };
+  const before = buildJsonLd(new Date("2026-10-06T12:00:00+02:00"), [once]) as Node[];
   expect(before.map((o) => o["@type"])).toEqual(["Person", "DanceSchool", "Event"]);
   const ev = before[2] as Node & { startDate: string; location: { address: { postalCode: string } } };
   expect(ev.startDate).toBe("2026-10-14T09:00:00+02:00");
   expect(ev.location.address.postalCode).toBe("1173");
-  const after = buildJsonLd(new Date("2026-10-20T12:00:00+02:00")) as Node[];
+  const after = buildJsonLd(new Date("2026-10-20T12:00:00+02:00"), [once]) as Node[];
   expect(after.map((o) => o["@type"])).toEqual(["Person", "DanceSchool"]);
 });
 
