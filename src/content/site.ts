@@ -76,7 +76,6 @@ const classes: DanceClass[] = [
     ],
     slots: [
       { kind: "weekly", weekday: "kedd", start: "18:00", end: "19:00" },
-      { kind: "weekly", weekday: "szerda", start: "10:00", end: "11:00" },
     ],
     poster: { src: "/posters/tancolo-evek.png", alt: "Táncoló Évek – az óra plakátja", width: 1024, height: 1536 },
     image: { src: "/media/tancolo-evek.jpg", alt: "Mosolygó, 50 év feletti táncosok egy világos stúdióban", width: 1612, height: 2000 },

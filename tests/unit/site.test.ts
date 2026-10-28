@@ -5,7 +5,7 @@ import { formatSlot } from "@/lib/schedule";
 test("plakát szerinti időpontok", () => {
   const bySlug = Object.fromEntries(site.classes.map((c) => [c.slug, c.slots.map(formatSlot)]));
   expect(bySlug["broadway"]).toEqual([]);
-  expect(bySlug["tancolo-evek"]).toEqual(["Minden kedden 18:00–19:00", "Minden szerdán 10:00–11:00"]);
+  expect(bySlug["tancolo-evek"]).toEqual(["Minden kedden 18:00–19:00"]);
 });
 
 test("helyszín és elérhetőség a plakát szerint", () => {
